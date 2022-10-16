@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'codehunt';
   contentDetails: any;
   articleDetails: any;
+  colorList = ['#F0DB4F', '#DC0530', '#22C55E', '#6675E0', '#54C5F8'];
   videoIds: string = '';
   constructor(public content: ContentService) {
     content.getYoutubeContent().subscribe((details: any) => {
@@ -32,5 +33,9 @@ export class AppComponent {
       console.log(data);
       this.articleDetails = data;
     });
+  }
+
+  getRandomColor() {
+    return this.colorList[Math.floor(Math.random() * this.colorList.length)];
   }
 }
