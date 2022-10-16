@@ -1,0 +1,179 @@
+<div>
+  <body style="background-color: #12181b">
+    <nav
+      class="flex flex-col justify-center md:justify-between md:flex-row"
+      style="background-color: #12181b"
+    >
+      <div class="m-2">
+        <img src="assets/codeHuntsr1x.png" class="md:w-50 md:h-20" />
+      </div>
+
+      <div class="text-white list-none flex justify-center md:p-8">
+        <div class="w-fit bg-lightYellow m-1 p-1 rounded-lg text-center">
+          <a href=""> <li class="text-[#000000] font-bold px-2">#Home</li></a>
+        </div>
+        <div class="w-fit bg-lightGreen m-1 p-1 rounded-lg text-center">
+          <a href=""><li class="text-[#000000] font-bold px-2">#About</li></a>
+        </div>
+      </div>
+
+      <div class="flex flex-row justify-evenly">
+        <div class="btm-icons m-5">
+          <a href="https://dev.to/abilashs003">
+            <img src="assets/devWhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+
+        <div class="btm-icons m-5">
+          <a href="https://github.com/Abilashs003">
+            <img src="assets/githubwhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+        <div class="btm-icons m-5">
+          <a href="https://abiaradhya.medium.com/">
+            <img src="assets/mediumwhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex justify-center pt-4 m-2">
+      <h1 class="text-white text-center font-semibold">
+        High-intensity code Tutorials and tech-knowlwdge to help you build and
+        ship you app faster <br />
+        Subscribe here for latest videos covering intermediate to advanced
+        lessons on software
+      </h1>
+      <h1></h1>
+    </div>
+
+    <div class="flex justify-center pt-4 m-4">
+      <img class="object-contain w-15 h-10" src="assets/Articles.svg" alt="" />
+      <h1></h1>
+    </div>
+
+    <div class="flex flex-row flex-wrap m-2">
+      <div *ngFor="let article of this.articleDetails" class="m-2 h-85">
+        <a href="{{ article.canonical_url }}">
+          <div
+            class="max-w-xs h-max min-h-full rounded bg-[#2A2E35] overflow-hidden"
+          >
+            <div class="grid justify-items-start">
+              <div class="mb-2">
+                <img
+                  *ngIf="article.cover_image"
+                  class="object-contain w-full h-50"
+                  src="{{ article.cover_image }}"
+                  alt=""
+                />
+                <img
+                  *ngIf="!article.cover_image"
+                  class="object-contain object-center w-60 h-30"
+                  src="assets/pexels-moose-photos-1037992.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="px-6 py-4 h-full">
+                <div class="text-white font-bold text-xl mb-2">
+                  {{ article.title }}
+                </div>
+                <p class="text-whitelite text-base">
+                  {{ article.description.slice(0, 75) }}...
+                </p>
+              </div>
+
+              <div
+                class="flex flex-row flex-wrap justify-start px-4 py-4 h-fit w-fit"
+              >
+                <div
+                  class="w-fit bg-lightblue m-1 p-1 rounded-lg text-center"
+                  *ngFor="let tag of article.tag_list"
+                >
+                  <strong class="text-dark m-1">{{ tag }}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Course list -->
+
+    <div class="flex justify-center pt-4 m-4">
+      <img class="object-contain w-15 h-10" src="assets/Videos.svg" alt="" />
+      <h1></h1>
+    </div>
+
+    <div class="flex flex-row flex-wrap m-2">
+      <div *ngFor="let item of this.contentDetails" class="m-2 h-85">
+        <a href="https://www.youtube.com/watch?v={{ item.id }}">
+          <div
+            class="max-w-xs h-max min-h-full rounded bg-[#2A2E35] overflow-hidden"
+          >
+            <div class="grid justify-items-start">
+              <div class="mb-2">
+                <img
+                  class="object-contain w-full h-50"
+                  src="{{ item.snippet.thumbnails.standard.url }}"
+                  alt=""
+                />
+              </div>
+              <div class="px-6 py-4 h-full">
+                <div class="text-white font-bold text-xl mb-2">
+                  {{ item.snippet.title }}
+                </div>
+                <p class="text-whitelite text-base">
+                  {{ item.snippet.description.slice(0, 100) }}...
+                </p>
+              </div>
+
+              <div
+                class="flex flex-row flex-wrap justify-start px-4 py-4 h-fit w-fit"
+              >
+                <div
+                  class="w-fit bg-lightblue m-1 p-1 rounded-lg text-center"
+                  *ngFor="let tag of item.snippet.tags"
+                >
+                  <strong class="text-dark m-1">{{ tag }}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer-section -->
+
+    <footer style="background-color: #12181b">
+      <div class="text-white list-none flex justify-center md:p-8">
+        <div class="w-fit bg-lightYellow m-1 p-1 rounded-lg text-center">
+          <a href=""> <li class="text-[#000000] font-bold px-2">#Home</li></a>
+        </div>
+        <div class="w-fit bg-lightGreen m-1 p-1 rounded-lg text-center">
+          <a href=""><li class="text-[#000000] font-bold px-2">#About</li></a>
+        </div>
+      </div>
+
+      <div class="flex flex-row justify-center">
+        <div class="btm-icons m-5">
+          <a href="https://dev.to/abilashs003">
+            <img src="assets/devWhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+
+        <div class="btm-icons m-5">
+          <a href="https://github.com/Abilashs003">
+            <img src="assets/githubwhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+        <div class="btm-icons m-5">
+          <a href="https://abiaradhya.medium.com/">
+            <img src="assets/mediumwhite.png" alt="" class="w-10 h-10" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</div>
