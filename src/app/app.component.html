@@ -62,7 +62,7 @@
       <div *ngFor="let item of this.contentDetails" class="m-2 h-85">
         <a href="https://www.youtube.com/watch?v={{ item.id }}">
           <div
-            class="max-w-xs h-max min-h-full rounded bg-[#2A2E35] overflow-hidden"
+            class="max-w-xs h-max min-h-full flex flex-col justify-between rounded bg-[#2A2E35] overflow-hidden"
           >
             <div class="grid justify-items-start">
               <div class="mb-2">
@@ -73,8 +73,8 @@
                 />
               </div>
               <div class="px-6 py-4 h-full">
-                <div class="text-white font-bold text-xl mb-2 font-sans">
-                  {{ item.snippet.title }}
+                <div class="text-white font-semibold text-xl mb-2 font-sans">
+                  {{ item.snippet.title.slice(0, 50) }}...
                 </div>
                 <p class="text-whitelite text-base font-sans">
                   {{ item.snippet.description.slice(0, 100) }}...
@@ -85,10 +85,13 @@
                 class="flex flex-row flex-wrap justify-start px-4 py-4 h-fit w-fit"
               >
                 <div
-                  class="w-fit bg-lightblue m-1 p-1 rounded-lg text-center"
+                  class="w-fit m-1 rounded-lg text-center"
+                  [ngStyle]="{ 'background-color': getRandomColor() }"
                   *ngFor="let tag of item.snippet.tags"
                 >
-                  <strong class="text-dark m-1 font-sans">{{ tag }}</strong>
+                  <p class="text-dark m-1 font-sans font-medium text-xs">
+                    {{ tag }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -106,7 +109,7 @@
       <div *ngFor="let article of this.articleDetails" class="m-2 h-85">
         <a href="{{ article.canonical_url }}">
           <div
-            class="max-w-xs h-max min-h-full rounded bg-[#2A2E35] overflow-hidden"
+            class="max-w-xs h-max min-h-full flex flex-col justify-between rounded bg-[#2A2E35] overflow-hidden"
           >
             <div class="grid justify-items-start">
               <div class="mb-2">
@@ -124,24 +127,26 @@
                 />
               </div>
               <div class="px-6 py-4 h-full">
-                <div class="text-white font-bold text-xl mb-2 font-sans">
-                  {{ article.title }}
+                <div class="text-white font-semibold text-xl mb-2 font-sans">
+                  {{ article.title.slice(0, 50) }}...
                 </div>
                 <p class="text-whitelite text-base font-sans">
                   {{ article.description.slice(0, 75) }}...
                 </p>
               </div>
+            </div>
 
+            <div
+              class="flex flex-row flex-wrap justify-start px-4 py-4 h-fit w-fit"
+            >
               <div
-                class="flex flex-row flex-wrap justify-start px-4 py-4 h-fit w-fit"
+                class="w-fit m-1 rounded-lg text-center"
+                [ngStyle]="{ 'background-color': getRandomColor() }"
+                *ngFor="let tag of article.tag_list"
               >
-                <div
-                  class="w-fit m-1 p-1 rounded-lg text-center"
-                  [ngStyle]="{ 'background-color': getRandomColor() }"
-                  *ngFor="let tag of article.tag_list"
-                >
-                  <strong class="text-dark m-1 font-sans">#{{ tag }}</strong>
-                </div>
+                <p class="text-dark m-1 font-sans font-semibold text-xs">
+                  #{{ tag }}
+                </p>
               </div>
             </div>
           </div>
