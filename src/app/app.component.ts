@@ -1,5 +1,8 @@
 import { ContentService } from './services/content.service';
 import { Component } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import { firebaseConfig } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +16,8 @@ export class AppComponent {
   colorList = ['#F0DB4F', '#DC0530', '#22C55E', '#6675E0', '#54C5F8'];
   videoIds: string = '';
   constructor(public content: ContentService) {
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     content.getYoutubeContent().subscribe((details: any) => {
       details.items.forEach((item: any) => {
         this.videoIds = this.videoIds.concat(
