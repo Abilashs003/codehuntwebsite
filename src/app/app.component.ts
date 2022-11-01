@@ -16,7 +16,7 @@ export class AppComponent {
     content.getYoutubeContent().subscribe((details: any) => {
       details.items.forEach((item: any) => {
         this.videoIds = this.videoIds.concat(
-          `%${item.snippet.thumbnails.default.url.split('/')[4]}`
+          `,${item.snippet.thumbnails.default.url.split('/')[4]}`
         );
       });
 
