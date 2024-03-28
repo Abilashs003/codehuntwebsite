@@ -87,7 +87,7 @@
                 <div
                   class="w-fit m-1 rounded-lg text-center"
                   [ngStyle]="{ 'background-color': getRandomColor() }"
-                  *ngFor="let tag of item.snippet.tags"
+                  *ngFor="let tag of item.snippet.tags | slice:0:5"
                 >
                   <p class="text-dark m-1 font-sans font-medium text-xs">
                     {{ tag }}
